@@ -2,7 +2,7 @@
   "manifest_version": "ext-v1",
   "name": "Only",
   "short_name": "Only",
-  "description": "Extension description",
+  "description": "Pay no mind to what's going on out there. It's no concern of ours. We're safe here.",
   "version": "1.0.0",
   "author": "EXT, Inc.",
   "icons": {

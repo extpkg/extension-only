@@ -44,8 +44,8 @@ ext.runtime.onExtensionClick.addListener(async () => {
       mutable: true,
     });
 
-    const aspectRatio = 960 / 600;
-    const minWidth = 960;
+    const aspectRatio = 1280 / 720;
+    const minWidth = 1280;
     const minHeight = minWidth / aspectRatio;
 
     window = await ext.windows.create({
@@ -82,10 +82,10 @@ ext.runtime.onExtensionClick.addListener(async () => {
     });
 
     await ext.webviews.loadFile(webview.id, "index.html");
-    await ext.webviews.openDevTools(webview.id, {
-      mode: "detach",
-      activate: true,
-    });
+    // await ext.webviews.openDevTools(webview.id, {
+    //   mode: "detach",
+    //   activate: true,
+    // });
 
     await ext.windows.focus(window.id);
     await ext.webviews.focus(webview.id);

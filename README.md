@@ -1,6 +1,6 @@
 # Only
 
-Extension description
+Pay no mind to what's going on out there. It's no concern of ours. We're safe here.
 
 ## Build
 
