@@ -74,6 +74,11 @@ ext.runtime.onExtensionClick.addListener(async () => {
       persistent,
       global: false,
     });
+    await ext.websessions.setWebRequestFilter(
+      websession.id,
+      "beforeReceiveHeaders",
+    );
+
     webview = await ext.webviews.create({
       window,
       websession,
@@ -158,12 +163,14 @@ ext.windows.onRemoved.addListener(async () => {
   }
 });
 
-// ext.windows.onUpdatedDarkMode.addListener(async (event, details) => {
-//   try {
-//     await ext.windows.update(event.id, {
-//       icon: details.enabled ? "./assets/128.png" : "./assets/128-dark.png",
-//     });
-//   } catch (error) {
-//     console.log(error, "ext.windows.onUpdatedDarkMode");
-//   }
-// });
+ext.websessions.onBeforeWebReceiveHeaders.addListener(
+  async (event, details) => {
+    await ext.websessions.webReceiveHeadersResponse(event.id, details.id, {
+      responseHeaders: {
+        ...details.responseHeaders,
+        "Cross-Origin-Embedder-Policy": ["require-corp"],
+        "Cross-Origin-Opener-Policy": ["same-origin"],
+      },
+    });
+  },
+);

@@ -26,7 +26,11 @@
     },
     "websessions": {
       "permissions": [],
-      "optional_permissions": ["create.persistent"]
+      "optional_permissions": [
+        "create.persistent",
+        "request.read",
+        "request.modify"
+      ]
     }
   }
 }
